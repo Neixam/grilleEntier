@@ -13,7 +13,7 @@ int		ft_puterror(int type_error)
 /*  RETOUR : 1 pour indiquer un problème sur le retour de la fonction main    */
 {
 	if (type_error == 1)
-		fprintf(stderr, "Manque d'option\nusage: ./grilleEntier [-agcl] [FILE]\n");
+		fprintf(stderr, "Manque d'option: il faut obligatoirement 2 options compatibles et un nom de fichier\nusage: ./grilleEntier [-a] ou [-g] [-c] ou [-l] [FILE]\n");
 	if (type_error == 0)
 		fprintf(stderr, "Mauvaise option\nusage: ./grilleEntier [-agcl] [FILE]\n");
 	if (type_error == -1)

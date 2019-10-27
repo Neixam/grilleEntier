@@ -14,6 +14,7 @@ void	initialisation(principal *nw)
 {
 	(nw->entrer).flag = 0;
 	(nw->entrer).fichier = NULL;
+	(nw->entrer).nb_flag = 0;
 	//(nw->grille). = ;
 	nw->error = 0;
 	nw->fichier = NULL;

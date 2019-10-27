@@ -9,10 +9,11 @@
 # define GRIENT_H
 # include <stdio.h>
 # include <stdlib.h>
-# include <MLV/MLV_all.h>
+//# include <MLV/MLV_all.h>
 
 typedef struct	parsing
 {
+	int		nb_flag;
 	int		flag;
 	char	*fichier;
 }				parse;

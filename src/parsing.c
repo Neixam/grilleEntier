@@ -9,13 +9,33 @@
 void	flag_convertisseur(char c, principal *donnee)
 {
 	if (c == 'a')
+	{
+		if ((donnee->entrer).flag & 8)
+			(donnee->entrer).flag = (donnee->entrer).flag  - 8;
+		donnee->entrer.nb_flag = donnee->entrer.nb_flag | 1;
 		(donnee->entrer).flag = (donnee->entrer).flag  | 1;
+	}
 	if (c == 'c')
+	{
+		if ((donnee->entrer).flag & 4)
+			(donnee->entrer).flag = (donnee->entrer).flag - 4;
+		donnee->entrer.nb_flag = donnee->entrer.nb_flag | 2;
 		(donnee->entrer).flag = (donnee->entrer).flag  | 2;
+	}
 	if (c == 'l')
+	{
+		if ((donnee->entrer).flag & 2)
+			(donnee->entrer).flag = (donnee->entrer).flag  - 2;
+		donnee->entrer.nb_flag = donnee->entrer.nb_flag | 2;
 		(donnee->entrer).flag = (donnee->entrer).flag  | 4;
+	}
 	if (c == 'g')
+	{
+		if ((donnee->entrer).flag & 1)
+			(donnee->entrer).flag = (donnee->entrer).flag  - 1;
+		donnee->entrer.nb_flag = donnee->entrer.nb_flag | 1;
 		(donnee->entrer).flag = (donnee->entrer).flag  | 8;
+	}
 }
 
 int		flag_test(char *enter, principal *donnee)
@@ -50,5 +70,7 @@ int		parsing_enter(char **av, int ac, principal *donnee)
 					return (-1);
 		}
 	}
-	return (1);
+	if (donnee->entrer.nb_flag != 3 || donnee->entrer.fichier == NULL)
+		return (1);
+	return (2);
 }

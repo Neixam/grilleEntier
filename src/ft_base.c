@@ -43,8 +43,8 @@ int		ft_strchr(char *s, char c)
 {
 	int		i;
 
-	for (i = 0; s1[i] != '\0'; i++)
-		if (s1[i] == c)
+	for (i = 0; s[i] != '\0'; i++)
+		if (s[i] == c)
 			return (i);
 	return (-1);
 }

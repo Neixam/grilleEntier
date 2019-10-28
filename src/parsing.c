@@ -7,6 +7,9 @@
 #include "grient.h"
 
 void	flag_convertisseur(char c, principal *donnee)
+/* BUT   : Converti les options données en argument en masquage de bit        */
+/* PARAM : c      => charactère à tester et à convertir                       */
+/*         donnee => adresse de la structure principale à modifier            */
 {
 	if (c == 'a')
 	{
@@ -38,11 +41,17 @@ void	flag_convertisseur(char c, principal *donnee)
 	}
 }
 
-int		flag_test(char *enter, principal *donnee)
+int		flag_test(char *enter, principal *donnee) 
+/* BUT   : Parcours l'argument donné pour le tester si il est valide ou non   */
+/* PARAM : enter  => chaîne de charactère qui représente l'argument donné     */
+/*                   au programme                                             */
+/*         donnee => adresse de la structure principale                       */
 {
 	int		i;
 
-	for (i = ft_strchr(enter, '-') + 1; enter[i] != '\0'; i++)
+	if ((i = ft_strchr(enter, '-')) != 0)
+		return (0);
+	for (i += 1; enter[i] != '\0'; i++)
 	{
 		if (enter[i] != 'a' && enter[i] != 'c' && enter[i] != 'g' && enter[i] != 'l')
 			return (0);
@@ -53,6 +62,14 @@ int		flag_test(char *enter, principal *donnee)
 }
 
 int		parsing_enter(char **av, int ac, principal *donnee)
+/* BUT    : Informe la fonction main si les arguments reçus sont justes et    */
+/*          sinon le type d'erreur trouvé                                     */
+/* PARAM  : av     => tableau de chaîne de charactère contenant les arguments */
+/*                    du programme                                            */
+/*          ac     => taille du tableau av et nombre d'argument + 1           */
+/*          donnee => adresse de la structure principale                      */
+/* RETOUR : retourne 0 s'il y a une mauvaise option 1 s'il manque un argument */
+/*          et -1 si l'allocation mémoire à échouer                           */
 {
 	int		i;
 

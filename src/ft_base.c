@@ -7,6 +7,9 @@
 #include "grient.h"
 
 int		ft_strlen(char *s)
+/* BUT    : Calcule la taille d'une chaîne de charactère                      */
+/* PARAM  : s => chaîne de charactère dont on veut connaître la taille        */
+/* RETOUR : retourne la taille trouvé lors du parcours                        */
 {
 	int		len;
 
@@ -15,6 +18,9 @@ int		ft_strlen(char *s)
 }
 
 char	*ft_strdup(char *s)
+/* BUT    : Alloue une nouvelle chaîne de charactère dont le contenue est s   */
+/* PARAM  : s => chaîne de charactère dont on veut copier le contenue         */
+/* RETOUR : retourne la nouvelle chaîne de charactère créée                   */
 {
 	int		len;
 	int		i;
@@ -29,7 +35,11 @@ char	*ft_strdup(char *s)
 	return (ret);
 }
 
-int		ft_strchr(char *s1, char c)
+int		ft_strchr(char *s, char c)
+/* BUT    : Cherche un charactère précis dans une chaîne donnée               */
+/* PARAM  : s => chaîne de charactère dont on veut trouvé un charactère       */
+/*          c => charactère que l'on veut retrouvé dans la chaîne             */
+/* RETOUR : retourne l'indice si il y a une occurence dans la chaîne sinon -1 */
 {
 	int		i;
 

@@ -6,6 +6,26 @@
 
 #include "grient.h"
 
+void	initAlea(int *a, int max)
+{
+	int		tmp;
+
+	tmp = random() % (max * 2);
+	if (tmp >= max)
+		*a = tmp - max;
+	else
+		*a = - tmp;
+}
+
+void	scanborne(int *a, int min, int max)
+{
+	do
+	{
+		printf("Un entier compris entre %d et %d : ", min, max);
+		scanf("%d", a);
+	}while (*a >= max && *a <= min);
+}
+
 int		ft_strlen(char *s)
 /* BUT    : Calcule la taille d'une chaîne de charactère                      */
 /* PARAM  : s => chaîne de charactère dont on veut connaître la taille        */

@@ -15,11 +15,14 @@ SRC		=	$(SRCPATH)main.c \
 			$(SRCPATH)initialisation.c \
 			$(SRCPATH)parsing.c \
 			$(SRCPATH)ft_base.c \
+			$(SRCPATH)game.c \
+			$(SRCPATH)affiche.c \
 
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall\
-#		-lMLV\
+		-lMLV\
+		-ansi\
 
 HEADER = includes
 

@@ -21,8 +21,8 @@ SRC		=	$(SRCPATH)main.c \
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall\
-		-lMLV\
-		-ansi\
+#		-ansi\
+#		-lMLV\
 
 HEADER = includes
 

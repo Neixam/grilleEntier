@@ -21,6 +21,6 @@ void	initialisation(principal *nw)
 	(nw->jeu).somme = 0;
 	(nw->jeu).grille = NULL;
 	nw->error = 0;
-	nw->seed = srandom(time(NULL));
 	nw->fichier = NULL;
+	srandom(time(NULL));
 }

@@ -6,15 +6,14 @@
 
 #include "grient.h"
 
-void	initAlea(int *a, int max)
+int		initAlea(int max)
 {
 	int		tmp;
 
-	tmp = random() % (max * 2);
-	if (tmp >= max)
-		*a = tmp - max;
-	else
-		*a = - tmp;
+	tmp = random();
+	if ((tmp = tmp % (max * 2)) >= max)
+		return (tmp - max);
+	return (-tmp);
 }
 
 void	scanborne(int *a, int min, int max)

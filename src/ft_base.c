@@ -8,7 +8,7 @@
 
 int		initAlea(int max)
 {
-	int		tmp;
+	long int	tmp;
 
 	tmp = random();
 	if ((tmp = tmp % (max * 2)) >= max)
@@ -66,4 +66,13 @@ int		ft_strchr(char *s, char c)
 		if (s[i] == c)
 			return (i);
 	return (-1);
+}
+
+void	echangeEntier(int *a, int *b)
+{
+	int		tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

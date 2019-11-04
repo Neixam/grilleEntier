@@ -43,9 +43,9 @@ int		read_grille(principal *donnee)
 int		not_read_grille(principal *donnee)
 {
 	printf("Entrer la taille du tableau\n");
-	scanborne(&(donnee->jeu.taille), 0, 20);
+	scanborne(&(donnee->jeu.taille), 1, 20);
 	printf("Entrer la valeur max\n");
-	scanborne(&(donnee->jeu.max), 0, VAL_MAX);
+	scanborne(&(donnee->jeu.max), 1, VAL_MAX);
 	if (creat_grille(donnee))
 		return (1);
 	return (0);

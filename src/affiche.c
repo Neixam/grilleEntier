@@ -29,10 +29,32 @@ void	affiche_ASCII(principal *donnee)
 	printf("\n");
 }
 
+void	menu_ASCII(principal *donnee)
+{
+	char	choix;
+
+	do
+	{
+		affiche_ASCII(donnee);
+		printf("Que voulez-vous faire : 'c' pour continuer, 's' pour sauvegarder et 'q' pour quitter\n");
+		scanf(" %c", &choix);
+		switch (choix)
+		{
+			case 'c' : joue_ASCII(donnee); break;
+			case 's' : /*sauvegarde_tab(donnee)*/; break;
+			case 'q' : break;
+			default : printf("Saisi non valide\n");
+		}
+		/*if (donnee->jeu.somme == BUT)
+			return (fin_de_jeu_ASCII(donnee));*/
+	}while (choix != 'q');
+	printf("Voulez-vous sauvegarder votre partie avant ?\n");
+}
+
 void	affiche_menu(principal *donnee)
 {
 	if (donnee->entrer.flag & 1)
-		affiche_ASCII(donnee);
+		menu_ASCII(donnee);
 /*	if (donnee->entrer.flag & 8)
 		affiche_graphique(donnee);
 */

@@ -17,6 +17,5 @@ int		main(int ac, char **av)
 		return (ft_puterror(donnee.error));
 	if ((donnee.error = start_game(&donnee)) < 2)
 		return (ft_puterror(donnee.error));
-	printf("error => %d\nflag => %d\nnom fichier => %s\n", donnee.error, donnee.entrer.flag, donnee.entrer.fichier);
 	return (0);
 }

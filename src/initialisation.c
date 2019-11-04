@@ -6,6 +6,22 @@
 
 #include "grient.h"
 
+void	delete_struct(principal *donnee)
+{
+	int		i;
+
+	if (donnee->entrer.fichier != NULL)
+		free(donnee->entrer.fichier);
+	if (donnee->fichier != NULL)
+		fclose(donnee->fichier);
+	if (donnee->jeu.grille != NULL)
+	{
+		for (i = 0; i < donnee->jeu.taille; i++)
+			free(donnee->jeu.grille[i]);
+		free(donnee->jeu.grille);
+	}
+}
+
 void	initialisation(principal *nw)
 /* BUT    : Initialise la structure principal du programme                    */
 /* PARAM  : L'adresse de la structure principal pour la pouvoir la modifier   */

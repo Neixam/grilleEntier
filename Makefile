@@ -17,12 +17,13 @@ SRC		=	$(SRCPATH)main.c \
 			$(SRCPATH)ft_base.c \
 			$(SRCPATH)game.c \
 			$(SRCPATH)affiche.c \
+			$(SRCPATH)jouer.c \
 
 OBJ = $(SRC:.c=.o)
 
 FLAGS = -Wall\
-#		-ansi\
-#		-lMLV\
+		-Werror\
+		-lMLV\
 
 HEADER = includes
 

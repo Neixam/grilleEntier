@@ -6,6 +6,50 @@
 
 #include "grient.h"
 
+int		ft_nbrlen(long n)
+{
+	int i;
+
+	i = 0;
+	if (n < 0)
+	{
+		n *= -1;
+		i++;
+	}
+	while ((n /= 10) > 0)
+		i++;
+	return (i + 1);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	long	tmp;
+	int		i;
+	int		sign;
+
+	sign = 0;
+	tmp = n;
+	if (tmp < 0)
+	{
+		tmp *= -1;
+		sign = 1;
+	}
+	i = ft_nbrlen(tmp) + sign;
+	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	str[i--] = '\0';
+	while (i >= 0)
+	{
+		str[i] = tmp % 10 + '0';
+		tmp /= 10;
+		i--;
+	}
+	if (sign == 1)
+		str[0] = '-';
+	return (str);
+}
+
 int		initAlea(int max)
 {
 	long int	tmp;
@@ -35,6 +79,40 @@ int		ft_strlen(char *s)
 	for (len = 0; s[len] != '\0'; len++);
 	return (len);
 }
+
+char	*ft_strsupp(char *s)
+{
+	int		i;
+	int		len;
+	char	*ret;
+
+	len = ft_strlen(s) - 1;
+	if ((ret = (char*)malloc(sizeof(char) * (len + 1))) == NULL)
+		return (NULL);
+	for (i = 0; i < len; i++)
+		ret[i] = s[i];
+	ret[i] = '\0';
+	free(s);
+	return (ret);
+}
+
+char	*ft_stradd(char *s, char c)
+{
+	int		len;
+	int		i;
+	char	*ret;
+
+	len = ft_strlen(s) + 1;
+	if ((ret = (char*)malloc(sizeof(char) * len + 1)) == NULL)
+		return (NULL);
+	for (i = 0; i < len - 1; i++)
+		ret[i] = s[i];
+	ret[i] = c;
+	ret[i + 1] = '\0';
+	free(s);
+	return (ret);
+}
+
 
 char	*ft_strdup(char *s)
 /* BUT    : Alloue une nouvelle chaîne de charactère dont le contenue est s   */
@@ -75,4 +153,30 @@ void	echangeEntier(int *a, int *b)
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
+}
+
+char	*ft_strjoin(char *s1, char *s2, int boo)
+{
+	int		i;
+	int		j;
+	int		len;
+	char	*ret;
+
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(ret = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	for (i = 0; s1[i] != '\0'; i++)
+		ret[i] = s1[i];
+	j = i;
+	for (i = 0; s2[i] != '\0'; i++)
+	{
+		ret[j] = s2[i];
+		j++;
+	}
+	ret[j] = '\0';
+	if (boo == 1 || boo == 3)
+		free(s1);
+	if (boo == 2 || boo == 3)
+		free(s2);
+	return (ret);
 }

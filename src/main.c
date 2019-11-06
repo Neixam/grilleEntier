@@ -17,5 +17,6 @@ int		main(int ac, char **av)
 		return (ft_puterror(donnee.error));
 	if ((donnee.error = start_game(&donnee)) < 2)
 		return (ft_puterror(donnee.error));
+	delete_struct(&donnee);
 	return (0);
 }

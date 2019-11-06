@@ -34,6 +34,7 @@ void	initialisation(principal *nw)
 	(nw->jeu).max = 0;
 	(nw->jeu).taille = 0;
 	(nw->jeu).coups = 0;
+	(nw->jeu).type_coups = 0;
 	(nw->jeu).somme = 0;
 	(nw->jeu).grille = NULL;
 	nw->error = 0;

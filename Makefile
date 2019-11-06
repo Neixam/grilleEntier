@@ -18,6 +18,7 @@ SRC		=	$(SRCPATH)main.c \
 			$(SRCPATH)game.c \
 			$(SRCPATH)affiche.c \
 			$(SRCPATH)jouer.c \
+			$(SRCPATH)degringole.c \
 
 OBJ = $(SRC:.c=.o)
 

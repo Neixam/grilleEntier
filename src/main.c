@@ -10,6 +10,7 @@ int		main(int ac, char **av)
 {
 	principal	donnee;
 
+	errno = 0;
 	if (ac == 1)
 		return (ft_puterror(1));
 	initialisation(&donnee);

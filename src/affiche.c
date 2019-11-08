@@ -99,10 +99,10 @@ void	affiche_ASCII(principal *donnee)
 	int		j;
 
 	printf("somme %d coups %d\n", donnee->jeu.somme, donnee->jeu.coups);
-	printf("\t");
+	printf(" \\ x\t");
 	for (i = 0; i < donnee->jeu.taille; i++)
 		printf("% d\t", i);
-	printf("\n\t");
+	printf("\ny \\\t");
 	for (i = 0; i < donnee->jeu.taille; i++)
 		printf("********");
 	for (i = 0; i < donnee->jeu.taille; i++)

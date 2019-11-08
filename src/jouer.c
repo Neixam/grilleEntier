@@ -111,9 +111,9 @@ void	joue_ASCII(principal *donnee)
 {
 	do
 	{
-		printf("Saisir les coordonnées de la première cellule : ");
+		printf("Saisir les coordonnées de la première cellule (x, y) : ");
 		scanf("%d %d", &(donnee->jeu.coordonnee1[0]), &(donnee->jeu.coordonnee1[1]));
-		printf("Saisir les coordonnées de la seconde cellule : ");
+		printf("Saisir les coordonnées de la seconde cellule (x, y) : ");
 		scanf("%d %d", &(donnee->jeu.coordonnee2[0]), &(donnee->jeu.coordonnee2[1]));
 	}while (test_entrer_coord(donnee));
 	select_ligne(donnee);

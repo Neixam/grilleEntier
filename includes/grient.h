@@ -1,13 +1,14 @@
 /* ************************************************************************** */
 /*                                 Header                                     */
 /*                                                                            */
-/*                           Abourenn -                                       */
+/*                           abourenn - chacelas                              */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRIENT_H
 # define GRIENT_H
 # include <stdlib.h>
+# include <errno.h>
 # include <stdio.h>
 # include <time.h>
 # include <MLV/MLV_all.h>
@@ -45,9 +46,10 @@ typedef struct	principal
 }				principal;
 
 char	*ft_itoa(int n);
-char	*ft_stradd(char *s, char c);
+char	*ft_stradd(char *s, int c);
 char	*ft_strdup(char *s);
 char	*ft_strjoin(char *s1, char *s2, int boo);
+char	*ft_strstr(char *s1, char *s2);
 char	*ft_strsupp(char *s);
 
 int		affiche_menu(principal *donnee);

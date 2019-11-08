@@ -21,6 +21,20 @@ int		ft_nbrlen(long n)
 	return (i + 1);
 }
 
+char	*ft_strstr(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+
+	for (i = 0; s1[i] != '\0'; i++)
+	{
+		for (j = 0; s1[i + j] == s2[j] && s2[j] != '\0' && s1[i + j] != '\0'; j++);
+		if (s2[j] == '\0')
+			return (&s1[i]);
+	}
+	return (NULL);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*str;
@@ -96,7 +110,7 @@ char	*ft_strsupp(char *s)
 	return (ret);
 }
 
-char	*ft_stradd(char *s, char c)
+char	*ft_stradd(char *s, int c)
 {
 	int		len;
 	int		i;

@@ -17,5 +17,12 @@ int		ft_puterror(int type_error)
 		fprintf(stderr, "Mauvaise option\nusage: ./grilleEntier [-agcl] [FILE]\n");
 	if (type_error == -1)
 		fprintf(stderr, "Impossible d'accéder à la mémoire verfier si l'accès est autorisé\n");
+	if (type_error == -2)
+	{
+		if (errno == 2)
+			fprintf(stderr, "Le fichier que vous essayez de lire n'existe pas\n");
+		else
+			fprintf(stderr, "%s\n", strerror(errno));
+	}
 	return (1);
 }

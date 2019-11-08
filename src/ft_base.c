@@ -6,6 +6,14 @@
 
 #include "grient.h"
 
+int		ft_strcmp(char *s1, char *s2)
+{
+	int		i;
+
+	for (i = 0; s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i]; i++);
+	return (s1[i] - s2[i]);
+}
+
 int		ft_nbrlen(long n)
 {
 	int i;
@@ -30,7 +38,7 @@ char	*ft_strstr(char *s1, char *s2)
 	{
 		for (j = 0; s1[i + j] == s2[j] && s2[j] != '\0' && s1[i + j] != '\0'; j++);
 		if (s2[j] == '\0')
-			return (&s1[i]);
+			return (&s1[i + 1]);
 	}
 	return (NULL);
 }

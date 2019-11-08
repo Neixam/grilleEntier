@@ -7,30 +7,43 @@
 #include "grient.h"
 
 int		quitte_graphique(principal *donnee)
-{
-	return (0);
+{	
+	MLV_clear_window(MLV_COLOR_WHITE);
+	MLV_actualise_window();
+	MLV_draw_text_box(0, 0, LARG_WIN + LARG_WIN / 6, HAUT_WIN, "Voulez-vous sauvegarder avant de quitter ?", 0, MLV_COLOR_WHITE, MLV_COLOR_PURPLE, MLV_COLOR_WHITE, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
+	MLV_draw_text_box((LARG_WIN + LARG_WIN / 6) / 2 - 150, (HAUT_WIN / 2) + 50, 50, 50, "Oui", 0, MLV_COLOR_BLACK, MLV_COLOR_GREEN, MLV_COLOR_WHITE, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
+	MLV_draw_text_box(((LARG_WIN + LARG_WIN / 6) / 2) + 100, (HAUT_WIN / 2) + 50, 50, 50, "Non", 0, MLV_COLOR_BLACK, MLV_COLOR_RED, MLV_COLOR_WHITE, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
+	MLV_actualise_window();
+	do{
+		MLV_wait_mouse(&(donnee->jeu.coordonnee1[0]), &(donnee->jeu.coordonnee1[1]));
+		if (donnee->jeu.coordonnee1[0] >= ((LARG_WIN + LARG_WIN / 6) / 2) - 150 && donnee->jeu.coordonnee1[0] < ((LARG_WIN + LARG_WIN / 6) / 2) - 100 && donnee->jeu.coordonnee1[1] >= (HAUT_WIN / 2) + 50 && donnee->jeu.coordonnee1[1] < (HAUT_WIN / 2) + 100)
+		{
+			if (sauvegarde_tab(donnee))
+				return (1);
+			return (0);
+		}
+		else if (donnee->jeu.coordonnee1[0] >= ((LARG_WIN + LARG_WIN / 6) / 2) + 100 && donnee->jeu.coordonnee1[0] < ((LARG_WIN + LARG_WIN / 6) / 2) + 150 && donnee->jeu.coordonnee1[1] >= (HAUT_WIN / 2) + 50 && donnee->jeu.coordonnee1[1] < (HAUT_WIN / 2) + 100)
+			return (0);
+	}while (1);
 }
 
 void	affiche_graphique(principal *donnee)
 {
 	int		i;
 	int		j;
-	int		surfacel;
-	int		surfaceh;
+	float	surfacel;
+	float	surfaceh;
 	char	*contenu;
 
 	surfacel = LARG_WIN / donnee->jeu.taille;
 	surfaceh = HAUT_WIN / donnee->jeu.taille;
-	contenu = NULL;
 	for (i = 0; i < donnee->jeu.taille; i++)
 	{
 		for (j = 0; j < donnee->jeu.taille; j++)
 		{
-			if (contenu == NULL)
-				contenu = ft_itoa(donnee->jeu.grille[i][j]);
+			contenu = ft_itoa(donnee->jeu.grille[i][j]);
 			MLV_draw_text_box(j * surfacel, i * surfaceh, surfacel, surfaceh, contenu, 0, MLV_COLOR_BLACK, MLV_COLOR_BLACK, ((i + j) % 2 == 1) ? MLV_COLOR_GREY : MLV_COLOR_WHITE, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
 			free(contenu);
-			contenu = NULL;
 		}
 	}
 	MLV_actualise_window();
@@ -50,15 +63,15 @@ void	put_hud(principal *donnee)
 	tmp2 = ft_strjoin("Objectif : ", tmp2, 2);
 	contenu = ft_strjoin(contenu, tmp, 3);
 	contenu = ft_strjoin(tmp2, contenu, 3);
-	MLV_draw_text_box(LARG_WIN, 0, 200, HAUT_WIN / 3, contenu, 0, MLV_COLOR_BLACK, MLV_COLOR_BLACK, MLV_COLOR_GREEN, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
-	MLV_draw_text_box(LARG_WIN, HAUT_WIN / 3, 200, HAUT_WIN / 3, "Sauvegarder", 0, MLV_COLOR_BLACK, MLV_COLOR_BLACK, MLV_COLOR_YELLOW, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
-	MLV_draw_text_box(LARG_WIN, (2 * HAUT_WIN) / 3, 200, HAUT_WIN / 3, "Quitter", 0, MLV_COLOR_BLACK, MLV_COLOR_BLACK, MLV_COLOR_RED, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
+	MLV_draw_text_box(LARG_WIN, 0, LARG_WIN / 6, HAUT_WIN / 3, contenu, 0, MLV_COLOR_BLACK, MLV_COLOR_BLACK, MLV_COLOR_GREEN, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
+	MLV_draw_text_box(LARG_WIN, HAUT_WIN / 3, LARG_WIN / 6, HAUT_WIN / 3, "Sauvegarder", 0, MLV_COLOR_BLACK, MLV_COLOR_BLACK, MLV_COLOR_YELLOW, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
+	MLV_draw_text_box(LARG_WIN, (2 * HAUT_WIN) / 3, LARG_WIN / 6, HAUT_WIN / 3, "Quitter", 0, MLV_COLOR_BLACK, MLV_COLOR_BLACK, MLV_COLOR_RED, MLV_TEXT_CENTER, MLV_HORIZONTAL_CENTER, MLV_VERTICAL_CENTER);
 	MLV_actualise_window();
 }
 
 int		menu_graphique(principal *donnee)
 {
-	MLV_create_window("grille d'entier", "grient", LARG_WIN + 200, HAUT_WIN);
+	MLV_create_window("grille d'entier", "grient", LARG_WIN + (LARG_WIN / 6), HAUT_WIN);
 	do
 	{
 		put_hud(donnee);
@@ -74,12 +87,10 @@ int		menu_graphique(principal *donnee)
 			conv_position_win_tab(donnee, 1);
 			select_case(donnee, donnee->jeu.coordonnee2[0], donnee->jeu.coordonnee2[1], donnee->jeu.taille);
 			if (test_entrer_coord(donnee) == 0)
-			{
 				select_ligne(donnee);
-				MLV_wait_seconds(2);
-			}
+			MLV_wait_seconds(1);
 		}
-		else if (LARG_WIN <= donnee->jeu.coordonnee1[0] && donnee->jeu.coordonnee1[0] < LARG_WIN + 200)
+		else if (LARG_WIN <= donnee->jeu.coordonnee1[0] && donnee->jeu.coordonnee1[0] < LARG_WIN + LARG_WIN / 6)
 		{
 			if (donnee->jeu.coordonnee1[1] >= HAUT_WIN / 3 && donnee->jeu.coordonnee1[1] < (2 * HAUT_WIN) / 3)
 			{

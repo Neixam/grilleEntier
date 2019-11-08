@@ -12,8 +12,8 @@
 # include <stdio.h>
 # include <time.h>
 # include <MLV/MLV_all.h>
-# define LARG_WIN 1440
-# define HAUT_WIN 720
+# define LARG_WIN 1440.0
+# define HAUT_WIN 720.0
 # define VAL_MAX 80
 # define BUT 100
 # define TAILLE_NOM 25
@@ -45,6 +45,7 @@ typedef struct	principal
 	int				error;
 }				principal;
 
+char	*change_path(char *dossier, char *path);
 char	*ft_itoa(int n);
 char	*ft_stradd(char *s, int c);
 char	*ft_strdup(char *s);
@@ -55,12 +56,13 @@ char	*ft_strsupp(char *s);
 int		affiche_menu(principal *donnee);
 int		fin_de_jeu_ASCII(principal *donnee);
 int		fin_de_jeu_graphique(principal *donnee);
-int		quitte_graphique(principal *donnee);
 int		ft_puterror(int type_error);
 int		ft_strchr(char *s1, char c);
+int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen(char *s);
 int		initAlea(int max);
 int		parsing_enter(char **av, int ac, principal *donnee);
+int		quitte_graphique(principal *donnee);
 int		sauvegarde_tab(principal *donnee);
 int		start_game(principal *donnee);
 int		test_entrer_coord(principal *donnee);

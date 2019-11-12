@@ -7,6 +7,10 @@
 #include "grient.h"
 
 int		test_entrer_coord(principal *donnee)
+/* BUT    : Test si les coordonnées entrer par l'utilisateur sont valides et  */
+/*          affiche soit en ascii ou bien en gaphique si c'est faux           */
+/* PARAM  : L'adresse de la structure principal                               */
+/* RETOUR : Renvoi 1 s'il les coordonnées sont fausses et 0 sinon             */
 {
 	char	*contenu;
 	float	surfaceh;
@@ -74,6 +78,12 @@ int		test_entrer_coord(principal *donnee)
 }
 
 void	select_case(principal *donnee, int x, int y, int taille)
+/* BUT    : Affiche en graphique un rectangle bleu pour afficher la case      */
+/*          selectionner                                                      */
+/* PARAM  : donnee => adresse de la structure principal                       */
+/*          x      => coordonnée de l'abscisse de la case selectionnée        */
+/*          y      => coordonnée de l'ordonnée de la case selectionnée        */
+/*          taille => taille de la grille                                     */
 {
 	float	surfacel;
 	float	surfaceh;
@@ -88,6 +98,9 @@ void	select_case(principal *donnee, int x, int y, int taille)
 }
 
 void	select_ligne(principal *donnee)
+/* BUT   : Permet de récupérer le segment selectionné par l'utilisateur       */
+/*         et d'afficher ce segment en graphique ainsi que de le sommer       */
+/* PARAM : L'adresse de la structure principale                               */
 {
 	int		i;
 	int		j;
@@ -154,6 +167,9 @@ void	select_ligne(principal *donnee)
 }
 
 void	joue_ASCII(principal *donnee)
+/* BUT   : Demande les coordonnées des cases que veux selectionner            */
+/*         l'utilisateur                                                      */
+/* PARAM : adresse de la structure principal                                  */
 {
 	do
 	{

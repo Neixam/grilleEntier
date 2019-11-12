@@ -7,6 +7,8 @@
 #include "grient.h"
 
 void	delete_struct(principal *donnee)
+/* BUT   : Libère l'espace mémoire si elle a été prise de la structure        */
+/* PARAM : adresse de la structure principale                                 */
 {
 	int		i;
 

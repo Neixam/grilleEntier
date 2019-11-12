@@ -7,6 +7,10 @@
 #include "grient.h"
 
 int		ft_strcmp(char *s1, char *s2)
+/* BUT    : Détermine si les chaines de charactères sont identiques ou non    */
+/* PARAM  : s1 => chaine de charactère à comparer                             */
+/*          s2 => chaine de charactère à comparer                             */
+/* RETOUR : Renvoi 0 si les chaines sont identiques sinon la diffèrence       */
 {
 	int		i;
 
@@ -15,6 +19,9 @@ int		ft_strcmp(char *s1, char *s2)
 }
 
 int		ft_nbrlen(long n)
+/* BUT    : Détermine la taille en charactère d'un long int                   */
+/* PARAM  : Entier dont on veut connaitre la taille                           */
+/* RETOUR : Taille d'entier                                                   */
 {
 	int i;
 
@@ -30,6 +37,11 @@ int		ft_nbrlen(long n)
 }
 
 char	*ft_strstr(char *s1, char *s2)
+/* BUT    : Cherche la première occurence de la chaine s2 dans la chaine s1   */
+/* PARAM  : s1 => chaine de charactère botte de foin                          */
+/*          s2 => chaine de charactère aiguille                               */
+/* RETOUR : Renvoie l'adresse du premier charactère de l'occurence de s2 dans */
+/*          s1 si il y a un occurence sinon renvoie NULL                      */
 {
 	int		i;
 	int		j;
@@ -44,6 +56,9 @@ char	*ft_strstr(char *s1, char *s2)
 }
 
 char	*ft_itoa(int n)
+/* BUT    : Convertie un entier en chaine de charactère                       */
+/* PARAM  : Entier à convertir                                                */
+/* RETOUR : Renvoie l'entier convertie ou NULL si il y a une erreur de malloc */
 {
 	char	*str;
 	long	tmp;
@@ -72,17 +87,11 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-int		initAlea(int max)
-{
-	long int	tmp;
-
-	tmp = random();
-	if ((tmp = tmp % (max * 2)) >= max)
-		return (tmp - max);
-	return (-tmp);
-}
-
 void	scanborne(int *a, int min, int max)
+/* BUT   : Demande à l'utilisateur un entier compris entre min et max         */
+/* PARAM : a   => adresse de l'entier à saisir                                */
+/*         min => entier minimum accepté                                      */
+/*         max => entier maximum accepté                                      */
 {
 	do
 	{
@@ -103,6 +112,9 @@ int		ft_strlen(char *s)
 }
 
 char	*ft_strsupp(char *s)
+/* BUT    : Retire le dernier charactère de la chaine s                       */
+/* PARAM  : Chaine de charactère que l'on veut modifier                       */
+/* RETOUR : La nouvelle chaine de charactère s sans le dernier charactère     */
 {
 	int		i;
 	int		len;
@@ -119,6 +131,10 @@ char	*ft_strsupp(char *s)
 }
 
 char	*ft_stradd(char *s, int c)
+/* BUT    : Ajoute le charactère c à la fin de la chaine de charactère s      */
+/* PARAM  : s => chaine de charactère à changer                               */
+/*          c => charactère à ajouter                                         */
+/* RETOUR : Renvoie la nouvelle chaine de charactère s avec le charactère c   */
 {
 	int		len;
 	int		i;
@@ -169,6 +185,9 @@ int		ft_strchr(char *s, char c)
 }
 
 void	echangeEntier(int *a, int *b)
+/* BUT : Echange les valeurs de deux entiers                                  */
+/* PARAM : a => l'adresse du premier entier à échanger                        */
+/*         b => l'adresse du second entier à échanger                         */
 {
 	int		tmp;
 
@@ -178,6 +197,14 @@ void	echangeEntier(int *a, int *b)
 }
 
 char	*ft_strjoin(char *s1, char *s2, int boo)
+/* BUT    : Crée une nouvelle chaine contenant la concaténation de s1 et s2 et*/
+/*          peut libèrer l'espace mémoire de s1 et s2 si possible             */
+/* PARAM  : s1  => première chaine de charactère                              */
+/*          s2  => seconde chaine de charactère                               */
+/*          boo => 0 libère aucune chaine, 1 libère s1, 2 libère s2 et libère */
+/*                 toute les chaines avec 3                                   */
+/* RETOUR : Renvoie la nouvelle chaine de charactère ou NULL si il y a un     */
+/*          problème d'allocation mémoire                                     */
 {
 	int		i;
 	int		j;

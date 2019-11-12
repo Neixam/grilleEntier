@@ -1,12 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                 ft_base.c                                  */
+/*                                 affiche.c                                  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grient.h"
 
 int		quitte_graphique(principal *donnee)
+/* BUT    : Quitte la fenetre ainsi que le jeu tout en demandant à l'user si  */
+/*          il veut sauvegarder sa partie                                     */
+/* PARAM  : l'adresse de la structure principale                              */
+/* RETOUR : Renvoie 1 si la sauvegarde échoue et 0 sinon                      */
 {	
 	MLV_clear_window(MLV_COLOR_WHITE);
 	MLV_actualise_window();
@@ -28,6 +32,8 @@ int		quitte_graphique(principal *donnee)
 }
 
 void	affiche_graphique(principal *donnee)
+/* BUT   : Affiche la grille dans une fenètre graphique                       */
+/* PARAM : l'adresse de la structure principale                               */
 {
 	int		i;
 	int		j;
@@ -50,6 +56,8 @@ void	affiche_graphique(principal *donnee)
 }
 
 void	put_hud(principal *donnee)
+/* BUT   : Affiche le HUD dans la fenetre graphique                           */
+/* PARAM : l'adresse de la structure principale                               */
 {
 	char	*contenu;
 	char	*tmp;
@@ -70,6 +78,11 @@ void	put_hud(principal *donnee)
 }
 
 int		menu_graphique(principal *donnee)
+/* BUT    : Affiche le menu, et récupère les actions de l'utilsateur dans la  */
+/*          fenetre graphique                                                 */
+/* PARAM  : l'adresse de la structure principale                              */
+/* RETOUR : Renvoie 1 si la sauvegarde échoue et si il y a une erreur dans la */
+/*          fonction fin_de_jeu_graphique sinon 0                             */
 {
 	MLV_create_window("grille d'entier", "grient", LARG_WIN + (LARG_WIN / 6), HAUT_WIN);
 	do
@@ -105,6 +118,8 @@ int		menu_graphique(principal *donnee)
 }
 
 void	affiche_ASCII(principal *donnee)
+/* BUT   : Affiche dans le terminal la grille du jeu                          */
+/* PARAM : L'adresse de la structure principale                               */
 {
 	int		i;
 	int		j;
@@ -126,6 +141,10 @@ void	affiche_ASCII(principal *donnee)
 }
 
 int		menu_ASCII(principal *donnee)
+/* BUT    : Affiche le menu dans le terminal et récupère le choix du user     */
+/* PARAM  : L'adresse de la structure principale                              */
+/* RETOUR : Renvoie 1 si la sauvegarde échoue ou si uen erreur est retournée  */
+/*          par la fonction fin_de_jeu_ASCII sinon 0                          */
 {
 	char	choix;
 
@@ -158,6 +177,10 @@ int		menu_ASCII(principal *donnee)
 }
 
 int		affiche_menu(principal *donnee)
+/* BUT    : Appelle le menu approprié à la demande de l'utilisateur           */
+/* PARAM  : L'adresse de la structure principale                              */
+/* RETOUR : Renvoie 1 si une erreur lors du déroulement des fonctions appelées*/
+/*          sinon 0                                                           */
 {
 	if (donnee->entrer.flag & 1)
 		if (menu_ASCII(donnee))
@@ -165,6 +188,5 @@ int		affiche_menu(principal *donnee)
 	if (donnee->entrer.flag & 8)
 		if (menu_graphique(donnee))
 			return (1);
-
 	return (0);
 }

@@ -122,6 +122,13 @@ int		ft_strchr(char *s1, char c);
 /*          c => charactère que l'on veut retrouvé dans la chaîne             */
 /* RETOUR : retourne l'indice si il y a une occurence dans la chaîne sinon -1 */
 
+int		ft_strrchr(char *s1, char c);
+/* BUT    : Cherche un charactère précis dans une chaîne donnée en commençant */
+/*          par la fin de la chaine                                           */
+/* PARAM  : s => chaîne de charactère dont on veut trouvé un charactère       */
+/*          c => charactère que l'on veut retrouvé dans la chaîne             */
+/* RETOUR : retourne l'indice si il y a une occurence dans la chaîne sinon -1 */
+
 int		ft_strcmp(char *s1, char *s2);
 /* BUT    : Détermine si les chaines de charactères sont identiques ou non    */
 /* PARAM  : s1 => chaine de charactère à comparer                             */

@@ -72,19 +72,34 @@ int		parsing_enter(char **av, int ac, principal *donnee)
 /*          et -1 si l'allocation mémoire à échouer                           */
 {
 	int		i;
+	int		indice_;
 
 	for (i = 1; i < ac; i++)
 	{
-		if (ft_strchr(av[i], '-') >= 0)
+		if (ft_strchr(av[i], '-') == 0 && (indice_ = ft_strrchr(av[i], '-')) == 0)
 		{
 			if (flag_test(av[i], donnee) == 0)
 				return (0);
 		}
 		else
 		{
-			if (donnee->entrer.fichier == NULL)
-				if ((donnee->entrer.fichier = ft_strdup(av[i])) == NULL)
-					return (-1);
+			if (i + 1 < ac && indice_ == 1)
+			{
+				if (donnee->entrer.fichier == NULL)
+					if ((donnee->entrer.fichier = ft_strdup(av[i + 1])) == NULL)
+						return (-1);
+			}
+			else if (indice_ == 1 && ft_strlen(av[i]) > 2)
+			{
+				if (donnee->entrer.fichier == NULL)
+					if ((donnee->entrer.fichier = ft_strdup(&(av[i][2]))) == NULL)
+						return (-1);
+			}
+			else
+				if (donnee->entrer.fichier == NULL)
+					if ((donnee->entrer.fichier = ft_strdup(av[i])) == NULL)
+						return (-1);
+			break;
 		}
 	}
 	if (donnee->entrer.nb_flag != 3 || donnee->entrer.fichier == NULL)

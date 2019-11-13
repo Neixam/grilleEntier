@@ -100,6 +100,21 @@ void	scanborne(int *a, int min, int max)
 	}while (*a >= max && *a <= min);
 }
 
+int		ft_strrchr(char *s, char c)
+/* BUT    : Cherche un charactère précis dans une chaîne donnée en commençant */
+/*          par la fin de la chaine                                           */
+/* PARAM  : s => chaîne de charactère dont on veut trouvé un charactère       */
+/*          c => charactère que l'on veut retrouvé dans la chaîne             */
+/* RETOUR : retourne l'indice si il y a une occurence dans la chaîne sinon -1 */
+{
+	int		i;
+
+	for (i = ft_strlen(s) - 1; i >= 0; i--)
+		if (s[i] == c)
+			return (i);
+	return (-1);
+}
+
 int		ft_strlen(char *s)
 /* BUT    : Calcule la taille d'une chaîne de charactère                      */
 /* PARAM  : s => chaîne de charactère dont on veut connaître la taille        */

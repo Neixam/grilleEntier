@@ -240,7 +240,7 @@ int		not_read_grille(principal *donnee)
 	int		j;
 
 	printf("Entrer la taille du tableau\n");
-	scanborne(&(donnee->jeu.taille), 1, 20);
+	scanborne(&(donnee->jeu.taille), 1, N);
 	printf("Entrer la valeur max\n");
 	scanborne(&(donnee->jeu.max), 1, VAL_MAX);
 	if (creat_grille(donnee))

@@ -10,8 +10,8 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <stdio.h>
-# include <time.h>
 # include <MLV/MLV_all.h>
+# define N 20
 # define LARG_WIN 1440.0
 # define HAUT_WIN 720.0
 # define VAL_MAX 80

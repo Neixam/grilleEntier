@@ -25,6 +25,7 @@ OBJ = $(SRC:.c=.o)
 FLAGS = -Wall\
 		-Werror\
 		-lMLV\
+		-ansi\
 
 HEADER = includes
 

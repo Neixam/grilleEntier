@@ -41,5 +41,4 @@ void	initialisation(principal *nw)
 	(nw->jeu).grille = NULL;
 	nw->error = 0;
 	nw->fichier = NULL;
-	srandom(time(NULL));
 }
